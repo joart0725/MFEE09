@@ -15,10 +15,7 @@ function App() {
       <AppClass title="類別型元件" initValue={num + 97} />
       <AppClass />
 
-      
       <AppFunction title="函式型元件" initValue={num + 99} />
-
-      <button onClick={() => setNum(10)}>更動基本數字</button>
     </>
   )
 }
