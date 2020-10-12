@@ -2,7 +2,8 @@
 import React, { useState } from 'react'
 
 function App() {
-  // 呼叫useState勾子，設定初始化值為0，回傳一組getter和setter
+  // 呼叫useState勾子，設定初始化值為0
+  // 回傳一組getter(獲取值)和setter(設定值)陣列
   const [total, setTotal] = useState(0)
 
   // return 值即元件的 render 方法，只能有一個根元素進行render
