@@ -6,6 +6,8 @@
 
 製作一個兩個下拉表單(select)，分別是選台灣的縣市，以及縣市包含的區域，之後出現對應的三碼郵遞區號。
 
+(參考範例：https://dennykuo.github.io/tw-city-selector/#/)
+
 (參考格式：https://github.com/essoduke/jQuery-TWzipcode/blob/master/jquery.twzipcode.js 或 https://github.com/dennykuo/tw-city-selector/blob/master/src/data-zh.js)
 
 ## 3. 輸入出生年月日，判斷是否超過18歲
