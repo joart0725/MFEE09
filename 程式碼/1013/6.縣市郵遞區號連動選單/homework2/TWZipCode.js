@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { countries, townships, postcodes } from './data.js'
 
 function TWZipCode(props) {
+  // 記錄陣列的索引值
   const [country, setCountry] = useState(-1)
   const [township, setTownship] = useState(-1)
-  //備用，如果需要設定郵遞區號時
+  // 下面這行是備用的，如果需要設定郵遞區號時
   //const [postcode, setPostcode] = useState(-1)
 
   return (
@@ -44,6 +45,8 @@ function TWZipCode(props) {
       </select>
 
       <span>
+        {/* 如果country與township的索引值均存在時，呈現postcode */}
+        {/* `條件 && 呈現` 是 `if(條件){呈現}` 的簡寫法，只在React JSX中可以使用 */}
         {country > -1 && township > -1 && postcodes[country][township]}
       </span>
     </>
