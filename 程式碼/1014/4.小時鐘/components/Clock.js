@@ -11,12 +11,14 @@ class AppClass extends React.Component {
     }
   }
 
+  // 每秒指定新的(日期時間)狀態
   componentDidMount() {
     this.timerId = setInterval(() => {
       this.tick()
     }, 1000)
   }
 
+  // 元件移除時要清除timerId
   componentWillUnmount() {
     clearInterval(this.timerId)
   }
