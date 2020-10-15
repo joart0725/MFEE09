@@ -15,6 +15,8 @@ function TodoApp(props) {
       />
       <hr />
       <ul>
+        {/* map使用時通常子元素會要求唯一key值(id值)  */}
+        {/* 這裡用索引值作為key值(id值)  */}
         {todos.map((value, index) => {
           return <li key={index}>{value}</li>
         })}
