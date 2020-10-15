@@ -15,11 +15,13 @@ function App() {
   const [startDate, setStartDate] = useState(new Date())
   const [age, setAge] = useState(0)
 
-  // birthday(Date object)
+  // birthday(必需是 Date 物件)
+  // `~~`是轉成整數的運算子，與parseInt相似
+  // 日期作加減乘除會自動轉為微秒值
   const calcAge = (birthday) => ~~((Date.now() - birthday) / 31557600000)
 
+  // 選完日期，更動年紀
   useEffect(() => {
-    console.log(typeof startDate)
     setAge(calcAge(startDate))
   }, [startDate])
 
