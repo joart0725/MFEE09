@@ -41,7 +41,8 @@ function TodoApp(props) {
       <hr />
       <ul>
         {/* map使用時通常子元素會要求唯一key值(id值)  */}
-        {/* 這裡用索引值作為key值(id值)  */}
+        {/* 這裡用id作為key值  */}
+        {/* 依照每個項目的completed來控制呈現的樣子  */}
         {todos.map((value, index) =>
           value.completed ? (
             <li key={value.text}>
