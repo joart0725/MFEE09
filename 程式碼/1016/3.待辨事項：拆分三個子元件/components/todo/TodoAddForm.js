@@ -1,6 +1,7 @@
 import React from 'react'
 
 function TodoAddForm(props) {
+  // 解構賦值的語法，先把要用的變數值從props解出來
   const { todoInput, setTodoInput, todos, setTodos } = props
 
   return (
