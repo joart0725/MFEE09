@@ -29,7 +29,7 @@ function TodoApp(props) {
 
   // 利用id值尋找對應的item的索引值，然後移出陣列
   const handleDelete = (id) => {
-    //建立一個新的陣列，其中不包含要被移除的項目(用filter)
+    //建立一個新的陣列，其中"不包含"要被移除的項目(用filter)
     const newTodos = todos.filter((item, index) => item.id !== id)
 
     // 設定回原本的todos
