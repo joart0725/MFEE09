@@ -7,6 +7,8 @@ import {
   Button,
   NavDropdown,
 } from 'react-bootstrap'
+
+// 選單連結要使用NavLink取代Link
 import { NavLink } from 'react-router-dom'
 
 function MyNavbar(props) {
@@ -23,6 +25,8 @@ function MyNavbar(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
+            {/* 把Nav.Link作為NavLink來使用 */}
+            {/* 一定要加上exact，不然首頁會一直點亮(active) */}
             <Nav.Link as={NavLink} to="/" exact>
               首頁
             </Nav.Link>
