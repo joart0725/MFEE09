@@ -8,12 +8,16 @@ function ProductList() {
     // 開啟載入指示
     setDataLoading(true)
 
+    // 從localstorage得到cart(json字串)
     const currentCart = localStorage.getItem('cart') || '[]'
 
+    // 把得到的cart(json字串)轉為陣列值，然後和新加入的物件值合併為新陣列
     const newCart = [...JSON.parse(currentCart), value]
 
+    // 設定回localstorage中(記得轉回json字串)
     localStorage.setItem('cart', JSON.stringify(newCart))
 
+    // 設定至元件的狀態中
     setMycart(newCart)
   }
 
