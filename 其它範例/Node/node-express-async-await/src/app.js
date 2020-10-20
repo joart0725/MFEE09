@@ -1,8 +1,14 @@
-import express from 'express'
-import bodyparser from 'body-parser'
-import cors from 'cors'
-import session from 'express-session'
-import sessionFileStore from 'session-file-store'
+//import express from 'express'
+// import bodyparser from 'body-parser'
+// import cors from 'cors'
+// import session from 'express-session'
+// import sessionFileStore from 'session-file-store'
+
+const express = require('express')
+const bodyparser = require('bodyparser')
+const cors = require('cors')
+const session = require('express-session')
+const sessionFileStore = require('session-file-store')
 
 // 需匯入api
 import users from './api/users.js'

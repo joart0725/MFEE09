@@ -3,8 +3,9 @@
   "extends": ["eslint:recommended", "plugin:node/recommended-module"],
   "env": {
     "node": true,
-    "browser": false,
-    "es6": true
+    "browser": true,
+    "es6": true,
+    "commonjs": true
   },
   "ecmaFeatures": {
     "modules": true,
@@ -26,7 +27,6 @@
     "node/prefer-promises/fs": "error"
   },
   "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module"
+    "ecmaVersion": 2020
   }
 }
