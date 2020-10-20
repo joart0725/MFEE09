@@ -1,50 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import { Modal, Button } from 'react-bootstrap'
-import { withRouter } from 'react-router-dom'
 
-function ProductList(props) {
+function ProductList() {
   const [mycart, setMycart] = useState([])
-  const [show, setShow] = useState(false)
-  const [productName, setProductName] = useState('')
+  const [dataLoading, setDataLoading] = useState(false)
 
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
+  function updateCartToLocalStorage(value) {
+    // 開啟載入指示
+    setDataLoading(true)
 
-  const updateCartToLocalStorage = (value) => {
-    const currentCart = JSON.parse(localStorage.getItem('cart')) || []
+    // 從localstorage得到cart(json字串)
+    const currentCart = localStorage.getItem('cart') || '[]'
 
-    const newCart = [...currentCart, value]
+    // 把得到的cart(json字串)轉為陣列值，然後和新加入的物件值合併為新陣列
+    const newCart = [...JSON.parse(currentCart), value]
+
+    // 設定回localstorage中(記得轉回json字串)
     localStorage.setItem('cart', JSON.stringify(newCart))
 
-    // 設定資料
+    // 設定至元件的狀態中
     setMycart(newCart)
-    setProductName(value.name)
-    handleShow()
   }
 
-  const messageModal = (
-    <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
-      <Modal.Header closeButton>
-        <Modal.Title>加入購物車訊息</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>產品：{productName} 已成功加入購物車</Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          繼續購物
-        </Button>
-        <Button
-          variant="primary"
-          onClick={() => {
-            props.history.push('/cart')
-          }}
-        >
-          前往購物車結帳
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  )
+  // 每次mycart資料有變動就會1秒後關掉載入指示
+  useEffect(() => {
+    setTimeout(() => {
+      setDataLoading(false)
+    }, 1000)
+  }, [mycart])
 
-  const spinner = (
+  const loading = (
     <>
       <div className="d-flex justify-content-center">
         <div className="spinner-border" role="status">
@@ -79,7 +63,7 @@ function ProductList(props) {
               onClick={() => {
                 updateCartToLocalStorage({
                   id: 1,
-                  name: 'iphone xs',
+                  name: 'iphone x',
                   amount: 1,
                   price: 15000,
                 })
@@ -109,7 +93,7 @@ function ProductList(props) {
               className="btn btn-success"
               onClick={() => {
                 updateCartToLocalStorage({
-                  id: 3,
+                  id: 2,
                   name: 'book',
                   amount: 1,
                   price: 200,
@@ -141,7 +125,7 @@ function ProductList(props) {
               className="btn btn-success"
               onClick={() => {
                 updateCartToLocalStorage({
-                  id: 2,
+                  id: 3,
                   name: 'ipad',
                   amount: 1,
                   price: 21000,
@@ -156,12 +140,8 @@ function ProductList(props) {
     </>
   )
 
-  return (
-    <>
-      {messageModal}
-      {display}
-    </>
-  )
+  // 以資料載入的指示狀態來切換要出現的畫面
+  return dataLoading ? loading : display
 }
 
-export default withRouter(ProductList)
+export default ProductList
