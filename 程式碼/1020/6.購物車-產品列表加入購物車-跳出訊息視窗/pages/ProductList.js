@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom'
 
 function ProductList(props) {
   const [mycart, setMycart] = useState([])
-  const [dataLoading, setDataLoading] = useState(false)
   const [show, setShow] = useState(false)
   const [productName, setProductName] = useState('')
 
@@ -12,35 +11,16 @@ function ProductList(props) {
   const handleShow = () => setShow(true)
 
   const updateCartToLocalStorage = (value) => {
-    // 開啟載入指示
-    //setDataLoading(true)
-
     const currentCart = JSON.parse(localStorage.getItem('cart')) || []
-
-    console.log('currentCart', currentCart)
 
     const newCart = [...currentCart, value]
     localStorage.setItem('cart', JSON.stringify(newCart))
 
-    console.log('newCart', newCart)
     // 設定資料
     setMycart(newCart)
     setProductName(value.name)
     handleShow()
-    //alert('已成功加入購物車')
   }
-
-  // componentDidMount 一開始就會開始載入資料
-  useEffect(() => {}, [])
-
-  // componentDidUpdate(相依mycart)
-  // 每次total資料有變動就會3秒後關掉載入指示
-  useEffect(() => {
-    // setTimeout(() => {
-    //   setDataLoading(false)
-    // }, 500)
-    //alert('已成功加入購物車')
-  }, [mycart])
 
   const messageModal = (
     <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
@@ -178,10 +158,8 @@ function ProductList(props) {
 
   return (
     <>
-      <>
-        {messageModal}
-        <div className="container">{dataLoading ? spinner : display}</div>
-      </>
+      {messageModal}
+      {display}
     </>
   )
 }
