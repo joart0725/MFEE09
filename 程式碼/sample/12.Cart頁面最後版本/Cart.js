@@ -9,7 +9,7 @@ function Cart() {
     // 開啟載入指示
     setDataLoading(true)
 
-    const newCart = localStorage.getItem('cart') || []
+    const newCart = localStorage.getItem('cart') || '[]'
 
     console.log(JSON.parse(newCart))
 
