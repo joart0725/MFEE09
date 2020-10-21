@@ -13,13 +13,10 @@ function Counter(props) {
       <h1>{props.total}</h1>
       {/* <button
         onClick={() => props.dispatch({ type: ADD_VALUE, value: 1 })}
-      ></button> */}
-      {/* 注意：執行動作建立器時，會自動dispatch */}
-      <button onClick={() => props.addValue(1)}>+1</button>
-      {/* <button onClick={() => props.dispatch({ type: MINUS_VALUE, value: 1 })}>
-        -1
-      </button> */}
+      ></button>+1</button> */}
 
+      {/* 注意：執行綁定的動作建立器時，Redux會協助自動dispatch */}
+      <button onClick={() => props.addValue(1)}>+1</button>
       <button onClick={() => props.minusValue(1)}>+1</button>
     </>
   )
