@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 // 改用動作類型的常數
-import { ADD_VALUE, MINUS_VALUE } from '../actions/actionTypes'
+//import { ADD_VALUE, MINUS_VALUE } from '../actions/actionTypes'
 // 導入actions/index.js中，這個元件只需要一部份的action creators
 import { addValue, minusValue } from '../actions/index'
 
