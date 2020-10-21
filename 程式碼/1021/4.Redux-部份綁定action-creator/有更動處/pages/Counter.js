@@ -1,12 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 // 改用動作類型的常數
-import { ADD_VALUE, MINUS_VALUE } from '../actions/actionTypes'
-// 導入actions/index.js中所有的action creators 成一個物件
-import * as actionCreators from '../actions/index'
+//import { ADD_VALUE, MINUS_VALUE } from '../actions/actionTypes'
+// 導入actions/index.js中，這個元件只需要一部份的action creators
+import { addValue, minusValue } from '../actions/index'
 
 function Counter(props) {
-  console.log(actionCreators)
   console.log('props', props)
 
   return (
@@ -23,9 +22,15 @@ function Counter(props) {
   )
 }
 
-const mapStateToProps = (store, ownProps) => {
-  console.log(ownProps)
+const mapStateToProps = (store) => {
   return { total: store.counter }
 }
 
-export default connect(mapStateToProps, actionCreators)(Counter)
+// 原本的mapDispatchToProps
+// const mapDispatchToProps = (dispatch) =>{
+//   return { addValue, minusValue }
+// }
+
+// 綁定部份action creators
+// 注意：第二個傳入參數` { addValue, minusValue }`是個物件值
+export default connect(mapStateToProps, { addValue, minusValue })(Counter)
