@@ -1,19 +1,14 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:node/recommended-module"],
   "env": {
-    "node": true,
-    "browser": true,
+    "commonjs": true,
     "es6": true,
-    "commonjs": true
+    "node": true
   },
-  "ecmaFeatures": {
-    "modules": true,
-    "spread": true,
-    "restParams": true
+  "extends": ["prettier", "eslint:recommended", "plugin:node/recommended"],
+  "plugins": ["prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2020
   },
-  "plugins": ["import", "prettier"],
-
   "rules": {
     "prettier/prettier": "error",
     "node/exports-style": ["error", "module.exports"],
@@ -25,8 +20,5 @@
     "node/prefer-global/url": ["error", "always"],
     "node/prefer-promises/dns": "error",
     "node/prefer-promises/fs": "error"
-  },
-  "parserOptions": {
-    "ecmaVersion": 2020
   }
 }
