@@ -1,11 +1,11 @@
-import express from 'express'
+const express = require('express')
+const router = express.Router()
 
-import User from '../domain/user.js'
+const User = require('../domain/user.js')
 
 // mysql2 async-await用的
-import dbMysql2 from '../db/database.js'
+const dbMysql2 = require('../db/database')
 
-const router = express.Router()
 
 // 執行sql用的async-await的函式
 // sql 執行用的sql
@@ -217,4 +217,5 @@ router.put('/:userId', (req, res) => {
   executeSQL(user.updateUserByIdSQL(req.params.userId), res, 'put', false, user)
 })
 
-export default router
+//export default router
+module.exports = router
